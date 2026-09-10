@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Retail Marketplace | SmartShop</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .cat-filter-btn {
+      border: 1px solid var(--border-color);
+      background: #fff;
+      color: var(--text-main);
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all var(--transition-fast);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cat-filter-btn:hover,
+    .cat-filter-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Notification -->
+  <div class="top-notice-bar text-center">
+    <div class="container d-flex align-items-center justify-content-center flex-wrap gap-2">
+      <span class="badge-hackathon"><i class="fas fa-tag me-1"></i> Smart Retail</span>
+      <span>Shop the best in Fashion, Tech, Beauty, and Living with AI Recommendations & Loyalty Points</span>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg smart-navbar">
+    <div class="container">
+      <a class="navbar-brand brand-logo" href="index.html">
+        <div class="brand-logo-icon">
+          <i class="fas fa-bag-shopping"></i>
+        </div>
+        <div>
+          <div>Smart<span class="brand-highlight">Shop</span></div>
+          <span class="brand-subtag">Smart Shopping For A Better Tomorrow</span>
+        </div>
+      </a>
+
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#smartNavMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="smartNavMenu">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="products.html">Retail</a></li>
+          <li class="nav-item"><a class="nav-link" href="hotels.html">Hospitality</a></li>
+          <li class="nav-item"><a class="nav-link" href="entertainment.html">Entertainment</a></li>
+          <li class="nav-item"><a class="nav-link" href="finance.html">Finance</a></li>
+          <li class="nav-item"><a class="nav-link" href="rewards.html">Rewards</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="wishlist.html" class="nav-action-btn" title="Saved Items">
+            <i class="far fa-heart"></i>
+            <span class="badge-counter" id="wishlistBadge" style="display: none;">0</span>
+          </a>
+          <a href="cart.html" class="nav-action-btn" title="Shopping Bag">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="badge-counter" id="cartBadge" style="display: none;">0</span>
+          </a>
+          <div id="userNavContainer"></div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Retail Header -->
+  <div class="bg-white border-bottom py-4">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-2 small">
+          <li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
+          <li class="breadcrumb-item active text-primary fw-bold" aria-current="page">Retail Marketplace</li>
+        </ol>
+      </nav>
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <div>
+          <h2 class="fw-bold mb-1">Smart Retail Catalog</h2>
+          <p class="text-muted small mb-0">Browse top-rated products with real-time stock and AI matching</p>
+        </div>
+        <!-- Category Pill Buttons -->
+        <div class="d-flex flex-wrap gap-2">
+          <button class="cat-filter-btn active" data-category="all" onclick="filterByCategory('all', this)">
+            <i class="fas fa-border-all"></i> All
+          </button>
+          <button class="cat-filter-btn" data-category="Fashion" onclick="filterByCategory('Fashion', this)">
+            <i class="fas fa-shirt"></i> Fashion
+          </button>
+          <button class="cat-filter-btn" data-category="Electronics" onclick="filterByCategory('Electronics', this)">
+            <i class="fas fa-laptop"></i> Electronics
+          </button>
+          <button class="cat-filter-btn" data-category="Beauty" onclick="filterByCategory('Beauty', this)">
+            <i class="fas fa-spa"></i> Beauty
+          </button>
+          <button class="cat-filter-btn" data-category="Home & Living" onclick="filterByCategory('Home & Living', this)">
+            <i class="fas fa-couch"></i> Home & Living
+          </button>
+          <button class="cat-filter-btn" data-category="Accessories" onclick="filterByCategory('Accessories', this)">
+            <i class="fas fa-glasses"></i> Accessories
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Catalog Content -->
+  <div class="container py-5">
+    <div class="row g-4">
+      
+      <!-- Filter Sidebar -->
+      <div class="col-12 col-lg-3">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white sticky-top" style="top: 90px;">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold mb-0 text-dark"><i class="fas fa-sliders text-primary me-2"></i> Filters</h5>
+            <button class="btn btn-link btn-sm p-0 text-decoration-none text-muted" onclick="resetFilters()">Reset</button>
+          </div>
+
+          <!-- Search input -->
+          <div class="mb-4">
+            <label class="form-label small fw-bold text-dark">Keyword Search</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light border-end-0 text-muted"><i class="fas fa-search"></i></span>
+              <input type="text" id="catalogSearchInput" class="form-control bg-light border-start-0 ps-0" placeholder="e.g. Shoes, Watch...">
+            </div>
+          </div>
+
+          <!-- Price Range Filter -->
+          <div class="mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <label class="form-label small fw-bold text-dark mb-0">Max Price</label>
+              <span class="fw-bold text-primary small" id="priceRangeValue">₹25,000</span>
+            </div>
+            <input type="range" class="form-range" id="priceRangeSlider" min="500" max="25000" step="500" value="25000">
+            <div class="d-flex justify-content-between text-muted" style="font-size: 0.75rem;">
+              <span>₹500</span>
+              <span>₹25,000+</span>
+            </div>
+          </div>
+
+          <!-- Rating Filter -->
+          <div class="mb-4">
+            <label class="form-label small fw-bold text-dark mb-2">Customer Rating</label>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="radio" name="ratingFilter" id="ratingAll" checked onclick="filterByRating(0)">
+              <label class="form-check-label small" for="ratingAll">All Ratings</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="radio" name="ratingFilter" id="rating4" onclick="filterByRating(4.5)">
+              <label class="form-check-label small text-warning" for="rating4">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                <span class="text-dark ms-1">4.5 & Above</span>
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="ratingFilter" id="rating3" onclick="filterByRating(4.0)">
+              <label class="form-check-label small text-warning" for="rating3">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                <span class="text-dark ms-1">4.0 & Above</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Reward Perk Callout -->
+          <div class="p-3 rounded-3" style="background: var(--primary-light); border: 1px dashed rgba(79, 70, 229, 0.4);">
+            <div class="small fw-bold text-primary mb-1"><i class="fas fa-coins me-1"></i> Earn 10% Points</div>
+            <div class="text-muted" style="font-size: 0.78rem;">
+              Every retail purchase earns you fungible points redeemable across hotel stays and movies!
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Products Grid & Sort Controls -->
+      <div class="col-12 col-lg-9">
+        
+        <!-- Controls Bar -->
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3 bg-white p-3 rounded-4 shadow-sm border">
+          <div class="small text-muted fw-bold" id="productCountBadge">
+            Loading products...
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <span class="small text-muted fw-bold text-nowrap">Sort By:</span>
+            <select class="form-select form-select-sm rounded-pill border" id="sortSelect" onchange="applyFilters()" style="min-width: 170px;">
+              <option value="popular">Most Popular</option>
+              <option value="rating">Top Customer Rated</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Product Cards Grid -->
+        <div class="row g-4" id="catalogProductsGrid">
+          <!-- Injected dynamically by products.js -->
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="smart-footer">
+    <div class="container text-center small text-muted">
+      © 2026 SmartShop – Smart Shopping for a Better Tomorrow | AICTE SIH 2026
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

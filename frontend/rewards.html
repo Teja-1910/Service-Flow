@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unified Rewards Ecosystem | SmartShop</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .rewards-hero {
+      background: linear-gradient(135deg, #4338ca 0%, #6d28d9 50%, #db2777 100%);
+      color: #fff;
+      border-radius: var(--radius-xl);
+      padding: 44px;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .rewards-hero::after {
+      content: '';
+      position: absolute;
+      right: -30px;
+      bottom: -30px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 70%);
+    }
+    .perk-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      padding: 24px;
+      transition: all var(--transition-normal);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .perk-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(79, 70, 229, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- Top Banner -->
+  <div class="top-notice-bar text-center">
+    <div class="container d-flex align-items-center justify-content-center flex-wrap gap-2">
+      <span class="badge-hackathon"><i class="fas fa-gift me-1"></i> Cross-Sector Loyalty</span>
+      <span>Earn points across shopping, hotels & movies — redeem everywhere on SmartShop</span>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg smart-navbar">
+    <div class="container">
+      <a class="navbar-brand brand-logo" href="index.html">
+        <div class="brand-logo-icon">
+          <i class="fas fa-bag-shopping"></i>
+        </div>
+        <div>
+          <div>Smart<span class="brand-highlight">Shop</span></div>
+          <span class="brand-subtag">Smart Shopping For A Better Tomorrow</span>
+        </div>
+      </a>
+
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#smartNavMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="smartNavMenu">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Retail</a></li>
+          <li class="nav-item"><a class="nav-link" href="hotels.html">Hospitality</a></li>
+          <li class="nav-item"><a class="nav-link" href="entertainment.html">Entertainment</a></li>
+          <li class="nav-item"><a class="nav-link" href="finance.html">Finance</a></li>
+          <li class="nav-item"><a class="nav-link active" href="rewards.html">Rewards</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="wishlist.html" class="nav-action-btn" title="Saved Items">
+            <i class="far fa-heart"></i>
+            <span class="badge-counter" id="wishlistBadge" style="display: none;">0</span>
+          </a>
+          <a href="cart.html" class="nav-action-btn" title="Shopping Bag">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="badge-counter" id="cartBadge" style="display: none;">0</span>
+          </a>
+          <div id="userNavContainer"></div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Rewards Content -->
+  <div class="container py-5">
+    
+    <!-- Hero Balance Banner -->
+    <div class="rewards-hero mb-5">
+      <div class="row align-items-center g-4">
+        <div class="col-12 col-md-7">
+          <span class="badge bg-white bg-opacity-25 px-3 py-1 rounded-pill small fw-bold mb-2">
+            <i class="fas fa-crown text-warning me-1"></i> Gold Tier Member
+          </span>
+          <div class="text-white-50 small">Your Fungible SmartShop Points</div>
+          <h1 class="display-3 fw-bold mb-2" id="rewardPointsBigDisplay">1,250 Pts</h1>
+          <p class="text-white-50 mb-0">
+            Equivalent to <strong class="text-white">₹250</strong> in direct checkout vouchers across Retail, Stays & Cinema.
+          </p>
+        </div>
+        <div class="col-12 col-md-5 text-md-end">
+          <button class="btn btn-warning rounded-pill px-4 py-2 fw-bold text-dark shadow-sm" onclick="showToast('Refer a Friend', 'Share code SMARTSHOP-SIH with your friends to earn +250 points on their first signup!', 'success')">
+            <i class="fas fa-user-plus me-1"></i> Refer & Earn +250 Pts
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- How You Earn Points -->
+    <div class="section-header text-center mb-4">
+      <span class="section-tag">Cross-Sector Multipliers</span>
+      <h2 class="section-title">How To Earn Smart Points</h2>
+      <p class="section-desc mx-auto">
+        Every interaction across our tertiary network contributes to your centralized point reservoir.
+      </p>
+    </div>
+
+    <div class="row g-4 mb-5 text-center">
+      <div class="col-6 col-md-3">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+          <div class="mx-auto mb-3" style="width: 54px; height: 54px; border-radius: 16px; background: rgba(79, 70, 229, 0.12); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+            <i class="fas fa-bag-shopping"></i>
+          </div>
+          <h6 class="fw-bold text-dark mb-1">Smart Retail</h6>
+          <div class="fw-bold text-primary fs-5 mb-1">1 Pt / ₹10</div>
+          <div class="small text-muted">Earn on electronics, fashion & homeware</div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+          <div class="mx-auto mb-3" style="width: 54px; height: 54px; border-radius: 16px; background: rgba(245, 158, 11, 0.12); color: var(--accent-amber); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+            <i class="fas fa-hotel"></i>
+          </div>
+          <h6 class="fw-bold text-dark mb-1">Hospitality</h6>
+          <div class="fw-bold text-warning fs-5 mb-1">1 Pt / ₹20</div>
+          <div class="small text-muted">Earn on resorts, boutique hotels & dining</div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+          <div class="mx-auto mb-3" style="width: 54px; height: 54px; border-radius: 16px; background: rgba(236, 72, 153, 0.12); color: var(--accent-pink); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+            <i class="fas fa-film"></i>
+          </div>
+          <h6 class="fw-bold text-dark mb-1">Entertainment</h6>
+          <div class="fw-bold text-danger fs-5 mb-1">1 Pt / ₹15</div>
+          <div class="small text-muted">Earn on IMAX movies, EDM & hackathons</div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+          <div class="mx-auto mb-3" style="width: 54px; height: 54px; border-radius: 16px; background: rgba(16, 185, 129, 0.12); color: var(--accent-emerald); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+            <i class="fas fa-share-nodes"></i>
+          </div>
+          <h6 class="fw-bold text-dark mb-1">Referrals</h6>
+          <div class="fw-bold text-success fs-5 mb-1">+250 Pts</div>
+          <div class="small text-muted">Instant reward when friends place first order</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rewards Redemption Store -->
+    <div class="section-header text-center mb-4">
+      <span class="section-tag">Instant Redemption</span>
+      <h2 class="section-title">Redeem Points For Vouchers</h2>
+      <p class="section-desc mx-auto">
+        Exchange your points for exclusive discounts and coupon vouchers.
+      </p>
+    </div>
+
+    <div class="row g-4 mb-5">
+      <!-- Voucher 1 -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="perk-card">
+          <div>
+            <span class="badge bg-primary-subtle text-primary mb-2 small fw-bold">Retail Voucher</span>
+            <h5 class="fw-bold text-dark mb-2">Flat ₹100 Off Retail</h5>
+            <p class="small text-muted mb-3">Applicable on any shopping order above ₹499 in our retail catalog.</p>
+          </div>
+          <div class="border-top pt-3 d-flex justify-content-between align-items-center">
+            <span class="fw-bold text-primary">500 Points</span>
+            <button class="btn btn-outline-primary btn-sm rounded-pill fw-bold" onclick="redeemPointsPerk(500, 'RETAIL100', '₹100 Retail Voucher')">
+              Redeem
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Voucher 2 -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="perk-card">
+          <div>
+            <span class="badge bg-warning-subtle text-dark mb-2 small fw-bold">Hospitality Voucher</span>
+            <h5 class="fw-bold text-dark mb-2">₹250 Off Hotel Stay</h5>
+            <p class="small text-muted mb-3">Instant discount on any 1+ night reservation at partner resorts.</p>
+          </div>
+          <div class="border-top pt-3 d-flex justify-content-between align-items-center">
+            <span class="fw-bold text-warning">1,000 Points</span>
+            <button class="btn btn-outline-warning btn-sm rounded-pill fw-bold text-dark" onclick="redeemPointsPerk(1000, 'HOTEL250', '₹250 Hotel Stay Voucher')">
+              Redeem
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Voucher 3 -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="perk-card">
+          <div>
+            <span class="badge bg-danger-subtle text-danger mb-2 small fw-bold">Cinema Perk</span>
+            <h5 class="fw-bold text-dark mb-2">Free Popcorn Combo</h5>
+            <p class="small text-muted mb-3">Enjoy a large butter popcorn + beverage on your next movie booking.</p>
+          </div>
+          <div class="border-top pt-3 d-flex justify-content-between align-items-center">
+            <span class="fw-bold text-danger">400 Points</span>
+            <button class="btn btn-outline-danger btn-sm rounded-pill fw-bold" onclick="redeemPointsPerk(400, 'POPCORN', 'Free Popcorn Combo Voucher')">
+              Redeem
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Voucher 4 -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="perk-card">
+          <div>
+            <span class="badge bg-info-subtle text-info mb-2 small fw-bold">Dining Experience</span>
+            <h5 class="fw-bold text-dark mb-2">15% Off Fine Dining</h5>
+            <p class="small text-muted mb-3">Save 15% on gourmet meals and rooftop lounge bookings across India.</p>
+          </div>
+          <div class="border-top pt-3 d-flex justify-content-between align-items-center">
+            <span class="fw-bold text-info">800 Points</span>
+            <button class="btn btn-outline-info btn-sm rounded-pill fw-bold text-dark" onclick="redeemPointsPerk(800, 'DINE15', '15% Fine Dining Voucher')">
+              Redeem
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="smart-footer">
+    <div class="container text-center small text-muted">
+      © 2026 SmartShop – Smart Shopping for a Better Tomorrow | AICTE SIH 2026
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function updateRewardsPageDisplay() {
+      const pts = localStorage.getItem('smartshop_rewards_points') || '1250';
+      const disp = document.getElementById('rewardPointsBigDisplay');
+      if (disp) disp.textContent = `${pts} Pts`;
+    }
+
+    function redeemPointsPerk(cost, code, title) {
+      let currentPts = parseInt(localStorage.getItem('smartshop_rewards_points') || '1250');
+      if (currentPts < cost) {
+        showToast("Insufficient Points", `You need ${cost} points for this perk. You have ${currentPts} points.`, "error");
+        return;
+      }
+
+      currentPts -= cost;
+      localStorage.setItem('smartshop_rewards_points', currentPts.toString());
+      updateRewardsPageDisplay();
+
+      showToast("Perk Redeemed!", `Redeemed "${title}"! Use coupon code: ${code}`, "success");
+    }
+
+    document.addEventListener('DOMContentLoaded', updateRewardsPageDisplay);
+  </script>
+</body>
+</html>

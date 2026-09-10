@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartShop – Smart Shopping for a Better Tomorrow | AICTE SIH 2026</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Notification / Hackathon Bar -->
+  <div class="top-notice-bar text-center">
+    <div class="container d-flex align-items-center justify-content-center flex-wrap gap-2">
+      <span class="badge-hackathon"><i class="fas fa-award me-1"></i> AICTE SIH 2026</span>
+      <span>Student Innovation in Tertiary Sectors: Retail, Hospitality, Entertainment & Financial Services</span>
+    </div>
+  </div>
+
+  <!-- Smart Navigation Bar -->
+  <nav class="navbar navbar-expand-lg smart-navbar">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand brand-logo" href="index.html">
+        <div class="brand-logo-icon">
+          <i class="fas fa-bag-shopping"></i>
+        </div>
+        <div>
+          <div>Smart<span class="brand-highlight">Shop</span></div>
+          <span class="brand-subtag">Smart Shopping For A Better Tomorrow</span>
+        </div>
+      </a>
+
+      <!-- Mobile Toggle -->
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#smartNavMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Nav Links & Search -->
+      <div class="collapse navbar-collapse" id="smartNavMenu">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="products.html">
+              Retail
+              <span class="nav-sector-badge">Shop</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="hotels.html">
+              Hospitality
+              <span class="nav-sector-badge">Stays</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="entertainment.html">
+              Entertainment
+              <span class="nav-sector-badge">Movies</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="finance.html">
+              Finance
+              <span class="nav-sector-badge">EMI & Wallet</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="rewards.html">
+              Rewards
+              <span class="badge bg-warning text-dark rounded-pill py-1 px-2" style="font-size: 0.68rem;">1.2k Pts</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+        </ul>
+
+        <!-- Right Side: Search, Wishlist, Cart, Profile -->
+        <div class="d-flex align-items-center gap-3 flex-wrap flex-lg-nowrap mt-3 mt-lg-0">
+          <div class="nav-search-box">
+            <i class="fas fa-search nav-search-icon"></i>
+            <input type="text" id="mainSearchInput" class="nav-search-input" placeholder="Search products, hotels, movies...">
+          </div>
+
+          <a href="wishlist.html" class="nav-action-btn" title="Saved Items">
+            <i class="far fa-heart"></i>
+            <span class="badge-counter" id="wishlistBadge" style="display: none;">0</span>
+          </a>
+
+          <a href="cart.html" class="nav-action-btn" title="Shopping Bag">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="badge-counter" id="cartBadge" style="display: none;">0</span>
+          </a>
+
+          <!-- Dynamic Auth Container (Login/Profile) -->
+          <div id="userNavContainer" class="d-flex align-items-center">
+            <!-- Injected by main.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <div class="hero-pill-badge">
+            <i class="fas fa-sparkles sparkle"></i>
+            <span>Unified Tertiary Sector Marketplace</span>
+          </div>
+          <h1 class="hero-title">
+            Smart Shopping for a <span class="gradient-text">Better Tomorrow</span>
+          </h1>
+          <p class="hero-subtitle">
+            Shop, Book, Pay and Enjoy – all in one unified smart platform. Explore personalized retail, reserve luxury hotels, book movie premieres, and manage your smart wallet seamlessly.
+          </p>
+
+          <div class="hero-sector-pills">
+            <span class="hero-sector-pill"><i class="fas fa-tag text-primary"></i> Smart Retail</span>
+            <span class="hero-sector-pill"><i class="fas fa-hotel text-warning"></i> Hotels & Dining</span>
+            <span class="hero-sector-pill"><i class="fas fa-film text-danger"></i> Movies & Events</span>
+            <span class="hero-sector-pill"><i class="fas fa-wallet text-info"></i> Demo Wallet & EMI</span>
+          </div>
+
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a href="products.html" class="btn-smart-primary">
+              <i class="fas fa-bag-shopping"></i> Explore Shopping
+            </a>
+            <a href="#categoriesSection" class="btn-smart-secondary">
+              <i class="fas fa-compass"></i> Explore Services
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="hero-showcase">
+            <!-- Floating Stat 1 -->
+            <div class="hero-floating-card card-1">
+              <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(245, 158, 11, 0.15); display: flex; align-items: center; justify-content: center; color: #f59e0b;">
+                <i class="fas fa-hotel"></i>
+              </div>
+              <div>
+                <div class="fw-bold" style="font-size: 0.82rem;">Taj Exotica Booked</div>
+                <div class="text-success fw-bold" style="font-size: 0.75rem;">+150 Smart Points Earned</div>
+              </div>
+            </div>
+
+            <!-- Main Graphic Card -->
+            <div class="hero-main-card">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="brand-logo-icon" style="width: 32px; height: 32px; font-size: 0.9rem;">
+                    <i class="fas fa-bolt"></i>
+                  </div>
+                  <span class="fw-bold text-dark" style="font-size: 0.95rem;">Smart Ecosystem</span>
+                </div>
+                <span class="badge bg-success-subtle text-success fw-bold px-3 py-1 rounded-pill">Active</span>
+              </div>
+
+              <!-- Product Preview in card -->
+              <div class="bg-light p-3 rounded-3 mb-3 border">
+                <div class="d-flex gap-3 align-items-center">
+                  <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&auto=format&fit=crop&q=80" alt="Shoes" style="width: 70px; height: 70px; object-fit: contain; border-radius: 10px; background: #fff; padding: 4px;">
+                  <div>
+                    <div class="badge bg-primary-subtle text-primary mb-1" style="font-size: 0.7rem;">Smart Recommendation</div>
+                    <div class="fw-bold" style="font-size: 0.95rem;">Urban Pro Running Shoes</div>
+                    <div class="fw-bold text-primary" style="font-size: 0.9rem;">₹3,499 <span class="text-muted fw-normal text-decoration-line-through" style="font-size: 0.75rem;">₹4,999</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row g-2 text-center">
+                <div class="col-6">
+                  <div class="p-2 border rounded-3 bg-white">
+                    <div class="text-muted small">Wallet Balance</div>
+                    <div class="fw-bold text-dark">₹5,000</div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="p-2 border rounded-3 bg-white">
+                    <div class="text-muted small">Reward Points</div>
+                    <div class="fw-bold text-primary">1,250 Pts</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Stat 2 -->
+            <div class="hero-floating-card card-2">
+              <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(16, 185, 129, 0.15); display: flex; align-items: center; justify-content: center; color: #10b981;">
+                <i class="fas fa-shield-check"></i>
+              </div>
+              <div>
+                <div class="fw-bold" style="font-size: 0.82rem;">Zero-Fee Instant Checkout</div>
+                <div class="text-muted" style="font-size: 0.75rem;">Unified Multi-Sector Billing</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Shop by Category (The 4 Pillars) -->
+  <section class="py-5" id="categoriesSection">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag">Four Pillars in One Marketplace</span>
+        <h2 class="section-title">Explore SmartShop Sectors</h2>
+        <p class="section-desc mx-auto">
+          Experience the power of tertiary sector integration. One account unlocks shopping, travel, entertainment, and financial convenience.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Retail -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <a href="products.html" class="d-block h-100">
+            <div class="category-card retail">
+              <div>
+                <div class="category-icon-wrapper icon-bg-retail">
+                  <i class="fas fa-bag-shopping"></i>
+                </div>
+                <h3 class="category-title">Smart Retail</h3>
+                <p class="category-desc">Curated fashion, electronics, home decor & beauty with AI recommendations.</p>
+              </div>
+              <div>
+                <span class="category-meta-badge"><i class="fas fa-layer-group me-1"></i> 5 Categories • 20+ Items</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Hospitality -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <a href="hotels.html" class="d-block h-100">
+            <div class="category-card hospitality">
+              <div>
+                <div class="category-icon-wrapper icon-bg-hospitality">
+                  <i class="fas fa-hotel"></i>
+                </div>
+                <h3 class="category-title">Hospitality</h3>
+                <p class="category-desc">Book luxury hotels, boutique resorts, and fine dining with exclusive partner discounts.</p>
+              </div>
+              <div>
+                <span class="category-meta-badge"><i class="fas fa-bed me-1"></i> Stays & Dining Deals</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Entertainment -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <a href="entertainment.html" class="d-block h-100">
+            <div class="category-card entertainment">
+              <div>
+                <div class="category-icon-wrapper icon-bg-entertainment">
+                  <i class="fas fa-film"></i>
+                </div>
+                <h3 class="category-title">Entertainment</h3>
+                <p class="category-desc">Reserve cinema seats, music festivals, tech hackathons & comedy live events.</p>
+              </div>
+              <div>
+                <span class="category-meta-badge"><i class="fas fa-ticket me-1"></i> Instant E-Tickets</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Finance -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <a href="finance.html" class="d-block h-100">
+            <div class="category-card finance">
+              <div>
+                <div class="category-icon-wrapper icon-bg-finance">
+                  <i class="fas fa-wallet"></i>
+                </div>
+                <h3 class="category-title">Financial Services</h3>
+                <p class="category-desc">Smart demo wallet balance, transaction ledger, and interactive product EMI calculator.</p>
+              </div>
+              <div>
+                <span class="category-meta-badge"><i class="fas fa-calculator me-1"></i> Demo Wallet & EMI</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Products -->
+  <section class="py-5 bg-white border-top border-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-end justify-content-between mb-4 gap-3">
+        <div>
+          <span class="section-tag">Trending Now</span>
+          <h2 class="section-title mb-0">Popular Products</h2>
+          <p class="text-muted mb-0">Top-rated items loved by customers across India</p>
+        </div>
+        <a href="products.html" class="btn btn-outline-primary rounded-pill px-4 fw-bold">
+          View All Products <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+      </div>
+
+      <div class="row g-4" id="popularProductsGrid">
+        <!-- Injected dynamically by main.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommended For You (AI & Activity Based) -->
+  <section class="py-5">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-end justify-content-between mb-4 gap-3">
+        <div>
+          <span class="section-tag" style="background: rgba(236, 72, 153, 0.12); color: var(--accent-pink);">
+            <i class="fas fa-wand-magic-sparkles me-1"></i> Personalized For You
+          </span>
+          <h2 class="section-title mb-0">✨ Recommended For You</h2>
+          <p class="text-muted mb-0">Tailored suggestions based on your interests, wishlist, and viewed products</p>
+        </div>
+        <span class="badge bg-primary text-white py-2 px-3 rounded-pill fw-bold" style="font-size: 0.8rem;">
+          <i class="fas fa-microchip me-1"></i> Smart Match Engine
+        </span>
+      </div>
+
+      <div class="row g-4" id="recommendedProductsGrid">
+        <!-- Injected dynamically by main.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Special Offers Banner -->
+  <section class="py-5 bg-white border-top border-bottom">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag">Coupons & Exclusive Discounts</span>
+        <h2 class="section-title">Special Cross-Sector Offers</h2>
+        <p class="section-desc mx-auto">
+          Apply these coupon codes at checkout to enjoy instant savings on your shopping, hotel stays, and movie tickets!
+        </p>
+      </div>
+
+      <div class="row g-4" id="specialOffersGrid">
+        <!-- Injected dynamically by main.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Cross-Sector Innovation Ecosystem Strip -->
+  <div class="container">
+    <div class="ecosystem-strip">
+      <div class="row align-items-center g-4 text-center text-lg-start">
+        <div class="col-lg-5">
+          <div class="badge bg-primary-subtle text-white px-3 py-1 rounded-pill mb-2 fw-bold" style="background: rgba(255, 255, 255, 0.2) !important;">
+            Unified Tertiary Innovation
+          </div>
+          <h3 class="fw-bold mb-3 text-white">Why Separate Apps When You Can Have SmartShop?</h3>
+          <p class="text-white-50 mb-0">
+            Built for SIH 2026, SmartShop solves platform fragmentation by bringing retail, hospitality, entertainment, and digital payments into a frictionless, reward-generating ecosystem.
+          </p>
+        </div>
+        <div class="col-lg-7">
+          <div class="row g-3">
+            <div class="col-6 col-md-3">
+              <div class="ecosystem-stat-item">
+                <div class="ecosystem-stat-number">4-in-1</div>
+                <div class="ecosystem-stat-label">Sectors Unified</div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="ecosystem-stat-item">
+                <div class="ecosystem-stat-number">100%</div>
+                <div class="ecosystem-stat-label">Points Fungible</div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="ecosystem-stat-item">
+                <div class="ecosystem-stat-number">₹0</div>
+                <div class="ecosystem-stat-label">Wallet Surcharge</div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="ecosystem-stat-item">
+                <div class="ecosystem-stat-number">&lt; 1s</div>
+                <div class="ecosystem-stat-label">Instant Booking</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why SmartShop? (Innovation Grid) -->
+  <section class="py-5">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag">Key Innovation Features</span>
+        <h2 class="section-title">Why SmartShop?</h2>
+        <p class="section-desc mx-auto">
+          Modern technological architecture meeting practical consumer needs in Indian tertiary commerce.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <!-- 1 -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="why-card">
+            <div class="why-icon">
+              <i class="fas fa-cubes"></i>
+            </div>
+            <h4 class="why-title">Unified Multi-Sector Platform</h4>
+            <p class="why-text">
+              No need to toggle between separate e-commerce, travel booking, movie ticket, and banking apps. One login powers your entire lifestyle.
+            </p>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="why-card">
+            <div class="why-icon" style="background: rgba(236, 72, 153, 0.12); color: var(--accent-pink);">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h4 class="why-title">Smart Personalization Engine</h4>
+            <p class="why-text">
+              Intelligent recommendation algorithms suggest correlated products, related movie premiers, and hotel escapes based on your browsing pattern.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="why-card">
+            <div class="why-icon" style="background: rgba(245, 158, 11, 0.12); color: var(--accent-amber);">
+              <i class="fas fa-coins"></i>
+            </div>
+            <h4 class="why-title">Cross-Sector Loyalty Rewards</h4>
+            <p class="why-text">
+              Earn reward points when shopping for sneakers, and redeem them directly to discount your next hotel stay or movie ticket.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="why-card">
+            <div class="why-icon" style="background: rgba(6, 182, 212, 0.12); color: var(--accent-cyan);">
+              <i class="fas fa-calculator"></i>
+            </div>
+            <h4 class="why-title">Interactive EMI & Smart Wallet</h4>
+            <p class="why-text">
+              Calculate instant monthly installments for high-value electronics and transact effortlessly using the built-in demo digital wallet.
+            </p>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="why-card">
+            <div class="why-icon" style="background: rgba(16, 185, 129, 0.12); color: var(--accent-emerald);">
+              <i class="fas fa-shield-halved"></i>
+            </div>
+            <h4 class="why-title">Secure Spring Boot & BCrypt</h4>
+            <p class="why-text">
+              Enterprise-grade backend using Java Spring Boot, Spring Security, BCrypt salted password hashing, and MySQL relational integrity.
+            </p>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="why-card">
+            <div class="why-icon" style="background: rgba(147, 51, 234, 0.12); color: var(--secondary);">
+              <i class="fas fa-truck-fast"></i>
+            </div>
+            <h4 class="why-title">Live Order & Booking Tracking</h4>
+            <p class="why-text">
+              Track retail package status seamlessly from Placed to Delivered, alongside confirmed QR tickets for movies and hotel stays.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="smart-footer">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Brand column -->
+        <div class="col-12 col-lg-4">
+          <div class="footer-brand">
+            <div class="brand-logo-icon">
+              <i class="fas fa-bag-shopping"></i>
+            </div>
+            <span>Smart<span style="color: var(--accent-cyan);">Shop</span></span>
+          </div>
+          <p class="footer-desc">
+            Shop • Explore • Book • Enjoy. The unified smart marketplace developed for AICTE Smart India Hackathon 2026.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-btn" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Sectors -->
+        <div class="col-6 col-md-3 col-lg-2">
+          <h5 class="footer-heading">Ecosystem</h5>
+          <ul class="footer-links">
+            <li><a href="products.html">Retail Marketplace</a></li>
+            <li><a href="hotels.html">Hospitality & Stays</a></li>
+            <li><a href="entertainment.html">Movies & Events</a></li>
+            <li><a href="finance.html">Smart Wallet & EMI</a></li>
+            <li><a href="rewards.html">Reward Points</a></li>
+          </ul>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-6 col-md-3 col-lg-2">
+          <h5 class="footer-heading">Account</h5>
+          <ul class="footer-links">
+            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="orders.html">Track Orders</a></li>
+            <li><a href="wishlist.html">My Wishlist</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
+            <li><a href="admin.html">Admin Dashboard</a></li>
+          </ul>
+        </div>
+
+        <!-- Hackathon & Info -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <h5 class="footer-heading">AICTE Hackathon 2026</h5>
+          <p class="small text-muted mb-3">
+            Prototype developed under the problem statement: <em>"Student Innovation-Technology ideas in tertiary sectors like Hospitality, Financial Services, Entertainment and Retail."</em>
+          </p>
+          <div class="p-3 rounded-3" style="background: #1e293b; border: 1px solid #334155;">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <span class="small text-light"><i class="fas fa-server text-success me-2"></i>Backend Status</span>
+              <span class="badge bg-success-subtle text-success">Spring Boot Ready</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="small text-light"><i class="fas fa-database text-info me-2"></i>Database</span>
+              <span class="badge bg-info-subtle text-info">MySQL Schema Ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <div>
+          © 2026 <strong>SmartShop</strong>. Built with pride for AICTE Smart India Hackathon.
+        </div>
+        <div class="d-flex gap-3">
+          <a href="about.html" class="text-muted">About Project</a>
+          <span>•</span>
+          <a href="#" class="text-muted">Privacy Policy</a>
+          <span>•</span>
+          <a href="#" class="text-muted">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core App JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

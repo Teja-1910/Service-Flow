@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | SmartShop</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .payment-tab-btn {
+      border: 1px solid var(--border-color);
+      background: #fff;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      text-align: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: all var(--transition-fast);
+      color: var(--text-main);
+    }
+    .payment-tab-btn.active {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary);
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.15);
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg smart-navbar">
+    <div class="container">
+      <a class="navbar-brand brand-logo" href="index.html">
+        <div class="brand-logo-icon">
+          <i class="fas fa-bag-shopping"></i>
+        </div>
+        <div>
+          <div>Smart<span class="brand-highlight">Shop</span></div>
+          <span class="brand-subtag">Smart Shopping For A Better Tomorrow</span>
+        </div>
+      </a>
+      <div class="ms-auto d-flex align-items-center gap-2">
+        <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill fw-bold">
+          <i class="fas fa-shield-alt me-1"></i> Demo Checkout
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Checkout Container -->
+  <div class="container py-5">
+    <div class="row g-4">
+      
+      <!-- Left: Delivery Address & Payment Form -->
+      <div class="col-12 col-lg-8">
+        <form onsubmit="processDemoPayment(event)">
+          
+          <!-- Section 1: Shipping Address -->
+          <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-4">
+            <h5 class="fw-bold text-dark mb-3"><i class="fas fa-map-marker-alt text-primary me-2"></i> 1. Delivery Address</h5>
+            
+            <div class="row g-3 mb-3">
+              <div class="col-12 col-sm-6">
+                <label class="form-label small fw-bold text-dark">Full Name</label>
+                <input type="text" class="form-control" id="checkoutName" placeholder="e.g. Aarav Sharma" required>
+              </div>
+              <div class="col-12 col-sm-6">
+                <label class="form-label small fw-bold text-dark">Mobile (10 Digits)</label>
+                <input type="tel" class="form-control" id="checkoutMobile" placeholder="9876543210" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-dark">Flat, House no., Building, Street</label>
+              <input type="text" class="form-control" id="checkoutAddress" placeholder="e.g. Flat 402, Lotus Greens, Sector 45" required>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-12 col-sm-4">
+                <label class="form-label small fw-bold text-dark">City</label>
+                <input type="text" class="form-control" id="checkoutCity" placeholder="Bengaluru" value="Bengaluru" required>
+              </div>
+              <div class="col-12 col-sm-4">
+                <label class="form-label small fw-bold text-dark">State</label>
+                <input type="text" class="form-control" id="checkoutState" placeholder="Karnataka" value="Karnataka" required>
+              </div>
+              <div class="col-12 col-sm-4">
+                <label class="form-label small fw-bold text-dark">Pincode</label>
+                <input type="text" class="form-control" id="checkoutPincode" placeholder="560102" value="560102" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Demo Payment Options -->
+          <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-4">
+            <h5 class="fw-bold text-dark mb-1"><i class="fas fa-credit-card text-success me-2"></i> 2. Demo Payment Gateway</h5>
+            <p class="text-muted small mb-3">Select any simulated payment option for this SIH 2026 prototype.</p>
+
+            <div class="row g-2 mb-4">
+              <div class="col-6 col-sm-3">
+                <div class="payment-tab-btn active" data-method="UPI" onclick="selectPaymentMethod('UPI')">
+                  <i class="fas fa-mobile-screen me-1"></i> UPI
+                </div>
+              </div>
+              <div class="col-6 col-sm-3">
+                <div class="payment-tab-btn" data-method="Card" onclick="selectPaymentMethod('Card')">
+                  <i class="fas fa-credit-card me-1"></i> Card
+                </div>
+              </div>
+              <div class="col-6 col-sm-3">
+                <div class="payment-tab-btn" data-method="NetBanking" onclick="selectPaymentMethod('NetBanking')">
+                  <i class="fas fa-building-columns me-1"></i> Net Banking
+                </div>
+              </div>
+              <div class="col-6 col-sm-3">
+                <div class="payment-tab-btn" data-method="Wallet" onclick="selectPaymentMethod('Wallet')">
+                  <i class="fas fa-wallet me-1"></i> Demo Wallet
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab Pane: UPI -->
+            <div class="payment-tab-pane" data-method="UPI">
+              <div class="p-3 bg-light rounded-3 border">
+                <label class="form-label small fw-bold text-dark">UPI ID / VPA</label>
+                <div class="input-group mb-2">
+                  <input type="text" class="form-control" placeholder="username@okhdfcbank" value="customer@okhdfcbank">
+                  <span class="input-group-text bg-white"><i class="fas fa-qrcode text-primary"></i></span>
+                </div>
+                <div class="text-muted small">Supported: GPay, PhonePe, Paytm, BHIM UPI</div>
+              </div>
+            </div>
+
+            <!-- Tab Pane: Card -->
+            <div class="payment-tab-pane d-none" data-method="Card">
+              <div class="p-3 bg-light rounded-3 border">
+                <div class="mb-2">
+                  <label class="form-label small fw-bold text-dark">Card Number</label>
+                  <input type="text" class="form-control" placeholder="•••• •••• •••• 4242" value="4532 8901 2345 4242">
+                </div>
+                <div class="row g-2">
+                  <div class="col-6">
+                    <label class="form-label small fw-bold text-dark">Valid Thru</label>
+                    <input type="text" class="form-control" placeholder="MM/YY" value="12/28">
+                  </div>
+                  <div class="col-6">
+                    <label class="form-label small fw-bold text-dark">CVV</label>
+                    <input type="password" class="form-control" placeholder="•••" value="888">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab Pane: Net Banking -->
+            <div class="payment-tab-pane d-none" data-method="NetBanking">
+              <div class="p-3 bg-light rounded-3 border">
+                <label class="form-label small fw-bold text-dark mb-2">Select Bank</label>
+                <div class="row g-2">
+                  <div class="col-6"><button type="button" class="btn btn-outline-secondary btn-sm w-100 fw-bold active">HDFC Bank</button></div>
+                  <div class="col-6"><button type="button" class="btn btn-outline-secondary btn-sm w-100 fw-bold">State Bank of India</button></div>
+                  <div class="col-6"><button type="button" class="btn btn-outline-secondary btn-sm w-100 fw-bold">ICICI Bank</button></div>
+                  <div class="col-6"><button type="button" class="btn btn-outline-secondary btn-sm w-100 fw-bold">Axis Bank</button></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab Pane: Wallet -->
+            <div class="payment-tab-pane d-none" data-method="Wallet">
+              <div class="p-3 bg-light rounded-3 border">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="fw-bold text-dark"><i class="fas fa-wallet text-info me-2"></i> SmartShop Digital Wallet</span>
+                  <span class="badge bg-success-subtle text-success fw-bold px-3 py-1 rounded-pill" id="checkoutWalletBalanceText">
+                    Available: ₹5,000
+                  </span>
+                </div>
+                <p class="small text-muted mb-0">1-Click instant deduction from your internal demo wallet.</p>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-smart-primary w-100 py-3 justify-content-center mt-4 fs-6">
+              <i class="fas fa-shield-check me-2"></i> Pay Now – Demo (<span id="checkoutButtonTotal">₹0</span>)
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Right: Selected Products Preview & Breakdown -->
+      <div class="col-12 col-lg-4">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white sticky-top" style="top: 90px;">
+          <h5 class="fw-bold text-dark mb-3">Order Preview</h5>
+          
+          <div id="checkoutItemsList" class="mb-3" style="max-height: 220px; overflow-y: auto;">
+            <!-- Injected by checkout.js -->
+          </div>
+
+          <div class="border-top pt-3">
+            <div class="d-flex justify-content-between mb-2 small text-muted">
+              <span>Items Subtotal</span>
+              <span class="text-dark fw-bold" id="checkoutSubtotal">₹0</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2 small text-muted">
+              <span>Delivery Charges</span>
+              <span class="text-success fw-bold" id="checkoutDelivery">FREE</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2 small text-success" id="checkoutDiscountRow" style="display: none;">
+              <span>Promo Discount</span>
+              <span class="fw-bold" id="checkoutDiscount">- ₹0</span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="fw-bold text-dark fs-5">Total Payable</span>
+              <span class="fw-bold text-primary fs-4" id="checkoutTotal">₹0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Demo Payment Processing Modal -->
+  <div class="modal fade" id="paymentProcessingModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 rounded-4 shadow-lg text-center p-5">
+        <div class="spinner-border text-primary mx-auto mb-4" style="width: 3.5rem; height: 3.5rem;" role="status"></div>
+        <h4 class="fw-bold text-dark mb-2">Simulating Secure Payment...</h4>
+        <p class="text-muted small mb-0">Verifying demo transaction credentials and creating your order record.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="smart-footer">
+    <div class="container text-center small text-muted">
+      © 2026 SmartShop – Smart Shopping for a Better Tomorrow | AICTE SIH 2026
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>
