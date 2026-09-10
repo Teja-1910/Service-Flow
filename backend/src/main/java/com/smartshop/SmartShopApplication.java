@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SmartShopApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SmartShopApplication.java, args);
+        SpringApplication.run(SmartShopApplication.class, args);
+
         System.out.println("=================================================");
         System.out.println(" SmartShop Backend is running successfully!");
         System.out.println(" AICTE Smart India Hackathon 2026 Prototype");
